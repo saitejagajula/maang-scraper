@@ -1,8 +1,12 @@
 [phases.setup]
-nixPkgs = ["python312", "chromium", "playwright-driver"]
+nixPkgs = ["python312", "chromium"]
 
 [phases.install]
-cmds = ["pip install -r requirements.txt", "playwright install chromium"]
+cmds = [
+  "python3 -m pip install --upgrade pip",
+  "python3 -m pip install -r requirements.txt",
+  "python3 -m playwright install chromium"
+]
 
 [start]
 cmd = "uvicorn main:app --host 0.0.0.0 --port $PORT"
